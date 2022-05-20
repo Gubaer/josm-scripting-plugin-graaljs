@@ -19,7 +19,7 @@ Available Releases:
    export CLASSPATH=$CLASSPATH:$(graaljs-classpath.sh)
    ```
 
-Then start [JOSM][JOSM] with stock JDK (i.e. the [OpenJDK][openjdk]) and install the
+Then start [JOSM][JOSM] with a stock JDK (i.e. the [OpenJDK][openjdk]) and install the
 [JOSM Scripting Plugin][scripting-plugin]. GraalJS is then available as a scripting engine in the JOSM Scripting Plugin.
 
 
