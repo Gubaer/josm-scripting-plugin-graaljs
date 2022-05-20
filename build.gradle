@@ -2,19 +2,54 @@ plugins {
     id 'groovy'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
-
 repositories {
     mavenCentral()
 }
 
+configurations {
+    graalvm
+}
+
 dependencies {
-    implementation 'org.apache.groovy:groovy:4.0.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'org.apache.groovy:groovy:4.0.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+
+    graalvm group: 'org.graalvm.sdk', name: 'graal-sdk', version: property("graalvm.version")
+    graalvm group: 'org.graalvm.truffle', name: 'truffle-api', version: property("graalvm.version")
+    graalvm group: 'org.graalvm.js', name: 'js', version: property("graalvm.version")
+    graalvm group: 'org.graalvm.js', name: 'js-scriptengine', version: property("graalvm.version")
 }
 
 test {
     useJUnitPlatform()
+}
+
+tasks.register("prepareBundle") {
+    doFirst  {
+        var graalBundle = "${layout.buildDirectory.get()}/graaljs-${project.property("graalvm.version")}"
+        var graalBundleLibs = "$graalBundle/lib"
+        file(graalBundleLibs).mkdirs()
+        configurations.graalvm.forEach {jar ->
+            copy {
+                from jar
+                into graalBundleLibs
+            }
+        }
+        copy {
+            from "graaljs-classpath.sh"
+            into graalBundle
+        }
+    }
+}
+
+tasks.register("assembleBundle", Zip) {
+    from "${layout.buildDirectory.get()}/graaljs-${project.property("graalvm.version")}"
+    archiveName "${layout.buildDirectory.get()}/graaljs-${project.property("graalvm.version")}.zip"
+    destinationDir file(layout.buildDirectory.get())
+}
+
+tasks.register("createBundle") {
+    dependsOn "prepareBundle"
+    dependsOn "assembleBundle"
 }
