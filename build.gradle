@@ -36,10 +36,6 @@ tasks.register("prepareBundle") {
                 into graalBundleLibs
             }
         }
-        copy {
-            from "graaljs-classpath.sh"
-            into graalBundle
-        }
     }
 }
 

@@ -2,7 +2,9 @@ This repository assembles the jar files required to use [GraalJS][graaljs] on a 
 
 Available Releases:
 
+*  GraalJS 22.3.0: [graaljs-22.1.3.zip](https://github.com/Gubaer/josm-scripting-plugin-graaljs/releases/download/22.3.0/graaljs-22.3.0.zip)
 *  GraalJS 22.1.0: [graaljs-22.1.0.zip](https://github.com/Gubaer/josm-scripting-plugin-graaljs/releases/download/22.1.0/graaljs-22.1.0.zip)
+
 
 
 # How to use
@@ -11,13 +13,22 @@ Available Releases:
 
 2. Unzip in a directory
 
-3. Add the jar files in the `lib` directory to the classpath
-
-   On Linux, you can use the script `graaljs-classpath.sh` included in the bundle.
-
+3. On Linux, run JOSM as follows:
    ```bash
-   export CLASSPATH=$CLASSPATH:$(graaljs-classpath.sh)
+   $ java -jar \
+      --module-path "/path/to/graaljs/jars" \
+      --add-modules org.graalvm.sdk,org.graalvm.js,com.oracle.truffle.regex,org.graalvm.truffle \
+      josm-latest.jar
    ```
+
+   On Windows, run JOSM as follows:
+   ```powershell
+   C:\> java -jar `
+      --module-path "\path\to\graaljs\jars" `
+      --add-modules org.graalvm.sdk,org.graalvm.js,com.oracle.truffle.regex,org.graalvm.truffle `
+      josm-tested.jar
+   ```
+
 
 Then start [JOSM][JOSM] with a stock JDK (i.e. the [OpenJDK][openjdk]) and install the
 [JOSM Scripting Plugin][scripting-plugin]. GraalJS is then available as a scripting engine in the JOSM Scripting Plugin.
