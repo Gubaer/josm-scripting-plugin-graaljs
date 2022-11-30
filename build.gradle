@@ -36,6 +36,10 @@ tasks.register("prepareBundle") {
                 into graalBundleLibs
             }
         }
+        copy {
+            from "README.md"
+            into graalBundle
+        }
     }
 }
 
