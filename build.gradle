@@ -45,8 +45,8 @@ tasks.register("prepareBundle") {
 
 tasks.register("assembleBundle", Zip) {
     from "${layout.buildDirectory.get()}/graaljs-${project.property("graalvm.version")}"
-    archiveName "${layout.buildDirectory.get()}/graaljs-${project.property("graalvm.version")}.zip"
-    destinationDir file(layout.buildDirectory.get())
+    archiveFileName = "${layout.buildDirectory.get()}/graaljs-${project.property("graalvm.version")}.zip"
+    destinationDirectory = file(layout.buildDirectory.get())
 }
 
 tasks.register("createBundle") {
