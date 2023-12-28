@@ -17,7 +17,7 @@ dependencies {
 
     graalvm group: 'org.graalvm.sdk', name: 'graal-sdk', version: property("graalvm.version")
     graalvm group: 'org.graalvm.truffle', name: 'truffle-api', version: property("graalvm.version")
-    graalvm group: 'org.graalvm.js', name: 'js', version: property("graalvm.version")
+    graalvm group: 'org.graalvm.js', name: 'js', version: "23.0.2"
     graalvm group: 'org.graalvm.js', name: 'js-scriptengine', version: property("graalvm.version")
 }
 
