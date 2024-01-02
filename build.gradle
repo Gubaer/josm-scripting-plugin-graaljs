@@ -15,10 +15,9 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 
-    graalvm group: 'org.graalvm.sdk', name: 'graal-sdk', version: property("graalvm.version")
-    graalvm group: 'org.graalvm.truffle', name: 'truffle-api', version: property("graalvm.version")
-    graalvm group: 'org.graalvm.js', name: 'js', version: "23.0.2"
-    graalvm group: 'org.graalvm.js', name: 'js-scriptengine', version: property("graalvm.version")
+    graalvm group: 'org.graalvm.polyglot', name: 'polyglot', version: property("graalvm.version")
+    graalvm group: 'org.graalvm.polyglot', name: 'js', version: property("graalvm.version")
+    graalvm group: 'org.graalvm.polyglot', name: 'tools', version: property("graalvm.version")
 }
 
 test {
@@ -45,6 +44,7 @@ tasks.register("prepareBundle") {
 
 tasks.register("assembleBundle", Zip) {
     from "${layout.buildDirectory.get()}/graaljs-${project.property("graalvm.version")}"
+    exclude "**/*.pom"
     archiveFileName = "${layout.buildDirectory.get()}/graaljs-${project.property("graalvm.version")}.zip"
     destinationDirectory = file(layout.buildDirectory.get())
 }
