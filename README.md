@@ -15,24 +15,6 @@ Available Releases:
 
 2. Unzip in a directory
 
-## Until GraalJS version 23.0.2
-
-3. On Linux, run JOSM as follows:
-   ```bash
-   $ java -jar \
-      --module-path "/path/to/graaljs/jars" \
-      --add-modules org.graalvm.sdk,org.graalvm.js,com.oracle.truffle.regex,org.graalvm.truffle \
-      josm-latest.jar
-   ```
-
-   On Windows, run JOSM as follows:
-   ```powershell
-   C:\> java -jar `
-      --module-path "\path\to\graaljs\jars" `
-      --add-modules org.graalvm.sdk,org.graalvm.js,com.oracle.truffle.regex,org.graalvm.truffle `
-      josm-latest.jar
-   ```
-
 ## Starting with GraalJS version 23.1.0
 
 On Linux, run JOSM as follows:
@@ -40,6 +22,9 @@ On Linux, run JOSM as follows:
    $ java -jar \
       --module-path "/path/to/graaljs/jars" \
       --add-modules org.graalvm.polyglot,org.graalvm.word,org.graalvm.collections \
+      --add-exports=java.base/sun.security.action=ALL-UNNAMED \
+      --add-exports=java.desktop/com.sun.imageio.plugins.jpeg=ALL-UNNAMED \
+      --add-exports=java.desktop/com.sun.imageio.spi=ALL-UNNAMED \
       josm-latest.jar
    ```
 
@@ -48,6 +33,36 @@ On Windows, run JOSM as follows:
    C:\> java -jar `
       --module-path "\path\to\graaljs\jars" `
       --add-modules org.graalvm.polyglot,org.graalvm.word,org.graalvm.collections `
+      --add-opens java.prefs/java.util.prefs=ALL-UNNAMED `
+      --add-exports java.base/sun.security.action=ALL-UNNAMED `
+      --add-exports java.desktop/com.sun.imageio.plugins.jpeg=ALL-UNNAMED `
+      --add-exports java.desktop/com.sun.imageio.spi=ALL-UNNAMED `
+      josm-latest.jar
+   ```
+
+## Until GraalJS version 23.0.2
+
+3. On Linux, run JOSM as follows:
+   ```bash
+   $ java -jar \
+      --module-path "/path/to/graaljs/jars" \
+      --add-modules org.graalvm.sdk,org.graalvm.js,com.oracle.truffle.regex,org.graalvm.truffle \
+      --add-opens java.prefs/java.util.prefs=ALL-UNNAMED \
+      --add-exports=java.base/sun.security.action=ALL-UNNAMED \
+      --add-exports=java.desktop/com.sun.imageio.plugins.jpeg=ALL-UNNAMED \
+      --add-exports=java.desktop/com.sun.imageio.spi=ALL-UNNAMED \
+      josm-latest.jar
+   ```
+
+   On Windows, run JOSM as follows:
+   ```powershell
+   C:\> java -jar `
+      --module-path "\path\to\graaljs\jars" `
+      --add-modules org.graalvm.sdk,org.graalvm.js,com.oracle.truffle.regex,org.graalvm.truffle `
+      --add-opens java.prefs/java.util.prefs=ALL-UNNAMED `
+      --add-exports java.base/sun.security.action=ALL-UNNAMED `
+      --add-exports java.desktop/com.sun.imageio.plugins.jpeg=ALL-UNNAMED `
+      --add-exports java.desktop/com.sun.imageio.spi=ALL-UNNAMED `
       josm-latest.jar
    ```
 
