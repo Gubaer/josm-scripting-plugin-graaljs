@@ -1,13 +1,6 @@
 This repository assembles the jar files required to use [GraalJS][graaljs] on a [stock JDK][graaljs-on-stock-jdk] or with the [GraalVM for JDK 21][graalvm-jdk21] in the [JOSM Scripting Plugin][scripting-plugin].
 
-Available Releases:
-
-*  GraalJS 24.1.1: [graaljs-24.1.1.zip](https://github.com/Gubaer/josm-scripting-plugin-graaljs/releases/download/24.1.1/graaljs-24.1.1.zip)
-*  GraalJS 23.1.1: [graaljs-23.1.1.zip](https://github.com/Gubaer/josm-scripting-plugin-graaljs/releases/download/23.1.1/graaljs-23.1.1.zip)
-*  GraalJS 23.0.0: [graaljs-23.0.0.zip](https://github.com/Gubaer/josm-scripting-plugin-graaljs/releases/download/23.0.0/graaljs-23.0.0.zip)
-*  GraalJS 22.3.0: [graaljs-22.1.3.zip](https://github.com/Gubaer/josm-scripting-plugin-graaljs/releases/download/22.3.0/graaljs-22.3.0.zip)
-*  GraalJS 22.1.0: [graaljs-22.1.0.zip](https://github.com/Gubaer/josm-scripting-plugin-graaljs/releases/download/22.1.0/graaljs-22.1.0.zip)
-
+Available Releases: see [releases](https://github.com/Gubaer/josm-scripting-plugin-graaljs/releases).
 
 # How to use
 
